@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         result.text = "Calculate"
 
         var sum = 0F
-
         test.text = getnum(Num1).toString()
         bt_plus.setOnClickListener({
 
