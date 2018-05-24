@@ -22,44 +22,50 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         result.text = "Calculate"
 
-        var sum :Float = 0F
+        var sum = 0F
 
+        test.text = getnum(Num1).toString()
+        bt_plus.setOnClickListener({
 
-        bt_plus.setOnClickListener(View.OnClickListener {
+            result.text = (("" + getnum(Num1) + " + " + getnum(Num2)))
 
-            result.text = (("" + getnum1(Num1).toInt() + " + " + getnum2(Num2).toInt()).toString())?.toUpperCase()
-
-            sum =  getnum1(Num1) + getnum2(Num2)
-
-        })
-        bt_minus.setOnClickListener(View.OnClickListener {
-            result.text = (("" + getnum1(Num1).toInt() + " - " + getnum2(Num2).toInt()).toString())?.toUpperCase()
-            sum = getnum1(Num1).minus(getnum2(Num2))
+            sum = getnum(Num1) + getnum(Num2)
 
         })
-        bt_multiply.setOnClickListener(View.OnClickListener {
-            result.text = (("" + getnum1(Num1).toInt() + " * " + getnum2(Num2).toInt()).toString())?.toUpperCase()
-            sum = getnum1(Num1).times(getnum2(Num2))
+        bt_minus.setOnClickListener({
+            result.text = (("" + getnum(Num1) + " - " + getnum(Num2)))
+            sum = getnum(Num1).minus(getnum(Num2))
 
         })
-        bt_divide.setOnClickListener(View.OnClickListener {
-            result.text = (("" + getnum1(Num1).toInt() + " / " + getnum2(Num2).toInt()).toString())?.toUpperCase()
-            sum = getnum1(Num1).div(getnum2(Num2))
+        bt_multiply.setOnClickListener({
+            result.text = (("" + getnum(Num1) + " * " + getnum(Num2)))
+            sum = getnum(Num1).times(getnum(Num2))
+
+        })
+        bt_divide.setOnClickListener({
+            result.text = (("" + getnum(Num1) + " / " + getnum(Num2)))
+            sum = getnum(Num1).div(getnum(Num2))
 
 
         })
-        bt_sum.setOnClickListener(View.OnClickListener(function = {
+        bt_sum.setOnClickListener({
             result.text = sum.toString()
-        }))
+        })
     }
-    private fun getnum1(input_num1: EditText?) : Float {
-            return ((input_num1?.text).toString()).toFloat()
+    private fun getnum(input_num1: EditText) : Float {
+        val lengh = input_num1.length()
+            if(lengh <= 0) {
+                return 0F
+        }else{
+            return ((input_num1.text).toString()).toFloat()
         }
-    private fun getnum2(input_num2: EditText?) : Float {
-        return ((input_num2?.text?:0).toString()).toFloat()
-    }
-}
 
+    }
+//    private  fun checklenght(input_num1: EditText) : Int{
+//        val test = input_num1.length()
+//        return  test.toString().toInt()
+//    }
+}
 
 
 
