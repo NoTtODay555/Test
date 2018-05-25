@@ -1,9 +1,17 @@
 package com.example.napat.myapplication
 
-import android.os.Parcel
-import android.os.Parcelable
+import android.app.Activity
+import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
 
-class Calculate() {
+class Calculate() : Activity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        test.text = "55555"
+
+    }
+
 
     fun Plus(a :Float, b:Float) : String{
         return (a + b).toString()
@@ -14,12 +22,12 @@ class Calculate() {
     fun Multiply(a :Float,b:Float) : String{
         return (a * b).toString()
     }
-    fun Divider(a :Float,b:Float) : String{
-        if(a.equals(0)){
+    fun Divider(a :Float,b:Float) : String {
+        if (b.toInt() == 0) {
             return "Indeterminable"
-        }else if(a.equals(0) and (b.equals(0))){
-            return  "Error"
-        }else  return (a / b).toString()
-    }
+        } else if (a.toInt() == 0 || (b.toInt() == 0)) {
+            return "Error"
+        } else return (a / b).toString()
 
+    }
 }
