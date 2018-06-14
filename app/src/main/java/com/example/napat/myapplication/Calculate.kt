@@ -1,11 +1,6 @@
 package com.example.napat.myapplication
 
-import android.app.Activity
-import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
-
-class Calculate() : Activity() {
-
+class Calculate {
     fun Plus(a :Float, b:Float) : String{
         return (a.plus(b)).toString()
     }
@@ -22,6 +17,5 @@ class Calculate() : Activity() {
         if (a.toInt() == 0 &&  (b.toInt() == 0)) {
             return "Error"
         } else return (a.div(b)).toString()
-
     }
 }
