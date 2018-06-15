@@ -2,13 +2,15 @@ package com.example.napat.myapplication.presenter
 
 import android.widget.EditText
 
-class CheckNullEditText{
-    fun checkNullForLeach(input_num1: EditText): Boolean {
+class CheckNullEditText: Contractor.CheckNull{
+    override fun checkNullForLeach(input_num1: EditText): Float {
         val length = input_num1.length()
-        return length <= 0
+        if (length <= 0){
+                return 0.0F
+        }else return input_num1.text.toString().toFloat()
     }
-    fun challenge(input_num1: EditText, n : Int):Boolean{
+    override fun challenge(input_num1: EditText, n : Int){
         val length = input_num1.length()
-        return length >= n
+        length >= n
     }
 }

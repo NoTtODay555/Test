@@ -1,7 +1,7 @@
 package com.example.napat.myapplication
 
 interface VIewContract{
-        interface views{
+        interface View{
             fun showResult(number : String)
         }
 }
