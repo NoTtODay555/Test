@@ -1,26 +1,26 @@
 package com.example.napat.myapplication.presenter
 
-import com.example.napat.myapplication.VIewContract
+import com.example.napat.myapplication.view.ViewContract
 
-class Calculate(val view : VIewContract.View) : Contractor {
+class Calculate(val view : ViewContract.View) : Contractor.calculate {
+
     override fun minus(a: Float?, b: Float?) {
-        view.showResult((b?.let { a?.minus(it) }?.toString())?: 0.0F.toString())
+        view.showResult(b?.let { a?.minus(it) } ?: 0.0F)
     }
 
     override fun multiply(a: Float?, b: Float?) {
-        view.showResult((b?.let { a?.times(it) }?.toString())?: 0.0F.toString())
+        view.showResult((b?.let { a?.times(it) } ?: 0.0F))
     }
 
     override fun divider(a: Float?, b: Float?) {
-        if (b?.toInt() == 0 && a?.toInt() != 0 || b?.toInt() == null && a?.toInt() != 0) {
-            view.showResult("Indeterminable")
+        if (a != 0.0F && b != 0.0F || a == 0.0F && b != 0.0F){
+            view.showResult((b?.let { a?.div(it) }?: 0.0F))
+        }else{
+            view.showError(TextErrorCalculated().textError(a,b))
         }
-        if (a?.toInt() == 0 && (b?.toInt() == 0) || a?.toInt() == null && (b?.toInt() == null)) {
-            view.showResult("Error")
-        } else view.showResult((b?.let { a?.div(it) }?.toString())?: 0.0F.toString())
-
     }
+
     override fun plus(a: Float?, b: Float?) {
-        view.showResult((b?.let { a?.plus(it) }?.toString())?: 0.0F.toString())
+        view.showResult((b?.let { a?.plus(it) })?: 0.0F)
     }
 }
