@@ -1,17 +1,13 @@
 package com.example.napat.myapplication.presenter
 
 import android.widget.EditText
+import com.example.napat.cardview_retrofit.Model.Result
 
 interface Contractor {
-    interface calculate {
-        fun plus(a: Float?, b: Float?)
-        fun minus(a: Float?, b: Float?)
-        fun multiply(a: Float?, b: Float?)
-        fun divider(a: Float?, b: Float?)
-
+    interface Precenter{
+        fun textError(a: Float?, b: Float?) : String
+        fun getNumView(a: EditText,b:EditText,num:Int)
+        fun getApi()
     }
 
-    interface CheckNull {
-        fun checkNullForLeach(input_num1: EditText): Float
-    }
 }

@@ -2,41 +2,48 @@ package com.example.napat.myapplication.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.example.napat.myapplication.R
-import com.example.napat.myapplication.presenter.Calculate
-import com.example.napat.myapplication.presenter.CheckNullEditText
+import com.example.napat.myapplication.model.Calculate
+import com.example.napat.myapplication.presenter.Contractor
+import com.example.napat.myapplication.presenter.TextErrorCalculated
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), ViewContract.View {
-    private var calculate : Calculate = Calculate(this)
-    private var checkNull = CheckNullEditText()
+class MainActivity : AppCompatActivity(), ViewContract.View{
+    override fun getTitle(text: String) {
+        result.text = text
+    }
 
+    val precenter : Contractor.Precenter = TextErrorCalculated(this)
     override fun showError(string: String) {
         result?.text = string
     }
 
     override fun showResult(number: Float) {
+        Log.e("ShowResult",number.toString())
         result?.text = number.toString()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        precenter.getApi()
 
         bt_plus.setOnClickListener({
-            calculate.plus(checkNull.checkNullForLeach(Num1), checkNull.checkNullForLeach(Num2))
+            Log.e("Botton","OK")
+            precenter.getNumView(Num1,Num2,1)
         })
 
         bt_minus.setOnClickListener({
-            calculate.minus(checkNull.checkNullForLeach(Num1), checkNull.checkNullForLeach(Num2))
+             precenter.getNumView(Num1,Num2,2)
         })
 
         bt_multiply.setOnClickListener({
-            calculate.multiply(checkNull.checkNullForLeach(Num1), checkNull.checkNullForLeach(Num2))
+            precenter.getNumView(Num1,Num2,3)
         })
 
         bt_divide.setOnClickListener({
-            calculate.divider(checkNull.checkNullForLeach(Num1), checkNull.checkNullForLeach(Num2))
+            precenter.getNumView(Num1,Num2,4)
         })
     }
 }
