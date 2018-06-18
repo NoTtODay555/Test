@@ -5,6 +5,8 @@ import android.widget.EditText
 import com.example.napat.cardview_retrofit.Model.Movie
 import com.example.napat.cardview_retrofit.Model.Result
 import com.example.napat.cardview_retrofit.Model.Retrofit
+import com.example.napat.myapplication.Controner
+import com.example.napat.myapplication.InterActive
 import com.example.napat.myapplication.model.Calculate
 import com.example.napat.myapplication.view.ViewContract
 import retrofit2.Call
@@ -12,17 +14,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class TextErrorCalculated(val context: ViewContract.View) : Contractor.Precenter{
-    override fun getApi() {
-        Retrofit().getApi()?.getMovie()?.enqueue(object : Callback<Movie>{
-            override fun onFailure(call: Call<Movie>?, t: Throwable?) {
-            }
-
-            override fun onResponse(call: Call<Movie>?, response: Response<Movie>?) {
-                response?.body()?.results?.get(0)?.title?.let { context.getTitle(it) }
-            }
-
-        })
+    override fun getTitle(t: String) {
+        context.getTitle(t)
     }
+
+    override fun getApi() {
+        interactice.getdata(2)
+    }
+
+    val interactice : Controner.Mainrisiner = InterActive(this)
 
     override fun getNumView(a: EditText, b: EditText, num: Int) {
         Log.e("getNum",a.text.toString() + "  " + b.text.toString())

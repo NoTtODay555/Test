@@ -8,6 +8,7 @@ interface Contractor {
         fun textError(a: Float?, b: Float?) : String
         fun getNumView(a: EditText,b:EditText,num:Int)
         fun getApi()
+        fun getTitle(t : String)
     }
 
 }
